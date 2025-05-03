@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+    <h1>Table, the tablest</h1>
+</header>
+<section>
+    <h2>Send message to Universe:</h2>
+    <h3>POST /send {"text": &lt;your message&gt;}</h3>
+</section>
+<section>
+    <h2>Load message from Universe:</h2>
+    <h3>localhost:5000/get?id=</h3>
+</section>
+{% endblock %}

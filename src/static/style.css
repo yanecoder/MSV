@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "M-L";
+    src: url("fonts/Montserrat-Light.ttf");
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: "M-L";
+}
+
+h3 {
+    color: grey;
+}
+
