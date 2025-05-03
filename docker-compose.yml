@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - send
+      - get
+
+  send:
+    build: ./send
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABASE_URL=postgresql://root:1234@db:5432/thetablest
+
+  get:
+    build: ./get
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://root:1234@db:5432/thetablest
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: thetablest
+    ports:
+      - "5432:5432"
