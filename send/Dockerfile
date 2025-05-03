@@ -1,9 +1,8 @@
-FROM nginx:alpine
+FROM python:3.11-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
 
-COPY static/ /usr/share/nginx/html/static/
+EXPOSE 4000
 
-COPY templates/ /usr/share/nginx/html/templates/
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["python", "main.py"]
