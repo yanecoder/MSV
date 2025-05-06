@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
+from db import db
 from models import Row
-from main import db
 
 get = Blueprint('get', __name__)
 
