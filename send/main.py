@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from .config import Config
+from config import Config
 
 db = SQLAlchemy()
 
@@ -9,7 +9,7 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
     
-    from .routes import send
+    from send import send
     app.register_blueprint(send)
     
     with app.app_context():

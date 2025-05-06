@@ -5,4 +5,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 4000
 
-CMD ["python", "-m", "main.py"]
+CMD ["python", "main.py"]
