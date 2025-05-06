@@ -24,7 +24,7 @@ services:
       - DATABASE_URL=postgresql://root:1234@db:5432/thetablest
 
   db:
-    image: postgres:14-alpine
+    image: postgres:17
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 1234
