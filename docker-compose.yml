@@ -14,20 +14,42 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - DATABASE_URL=postgresql://root:1234@db:5432/thetablest
+      - DATABASE_URL=postgresql://root:1234@msv-db:5432/thetablest
+    networks:
+      - msv-net
+    depends_on:
+      msv-db:
+        condition: service_healthy
 
   get:
     build: ./get
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URL=postgresql://root:1234@db:5432/thetablest
+      - DATABASE_URL=postgresql://root:1234@msv-db:5432/thetablest
+    networks:
+      - msv-net
+    depends_on:
+      msv-db:
+        condition: service_healthy
 
-  db:
+  msv-db:
     image: postgres:17
+    container_name: msv-db
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: thetablest
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d thetablest"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - "5432:5432"
+    networks:
+      - msv-net
+
+networks:
+  msv-net:
+    name: msv-net
