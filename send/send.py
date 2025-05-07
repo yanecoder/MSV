@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from models import Row
-from main import db
+from db import db
 
 send = Blueprint('send', __name__)
 
